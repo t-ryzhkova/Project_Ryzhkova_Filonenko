@@ -20,7 +20,7 @@ df["Position"] = df["Signal"].diff()
 
 df["Action"] = np.where(df["Position"] == 2, "Купівля", np.where(df["Position"] == -2, "Продаж", "Утримання"))
 # print(df)
-df.reset_index().to_csv("Adidas_strategy.csv", index=False, encoding="utf-8")
+
 
 df["NextOpen"] = df["Open"].shift(-1)
 
@@ -42,7 +42,7 @@ for index, row in df.iterrows():
         buy_price = None
     else:
         pass
-
+print(trades)
 total_profit = sum(trade["P&L"] for trade in trades)
 print(f"Total profit is {total_profit}")
 
